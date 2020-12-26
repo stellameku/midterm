@@ -40,7 +40,7 @@
           <div class="kotak3">
             <img src="./assets/kotak2.png" width="100%" height="247.65px"><br>
             <p>華山烏梅劇場「Face to face」實驗性跨領域展演 × 四組劇場表演與一組 </p><br><br><br>
-            <el-button>Read More</el-button>
+            <el-button>Read more</el-button>
           </div>        
         </div>
       </div><br><br><br><br><br><br><br><br>
