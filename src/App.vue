@@ -1,22 +1,50 @@
 <template>
   <div id="app">
-     <div class="topnav">
+    <div class="topnav">
       <img src = "./assets/nthulogo.png" width = "50" height="50">
       <span >國立清華大學藝術學院</span>
-      <router-link to="/contact">聯絡</router-link>
-      <a href="#news">藝術學報</a>
-      <a href="#contact">師資</a>
-      <a href="#search">招生資訊</a>
-      <a href="#about">關於我們</a>
-      <a href="#about">HOME</a>
-    </div> 
-    <router-view/>
+      
+      <el-menu :default-active="activeIndex" class="el-menu-demo" 
+      mode="horizontal" @select="handleSelect " background-color="#7D0BA5" text-color="#fff" active-text-color="#fff">
+  <el-menu-item index="1">HOME</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">關於學院</template>
+    <el-menu-item index="2-1">學院簡介</el-menu-item>
+    <el-menu-item index="2-2">未來展望</el-menu-item>
+    <el-menu-item index="2-3">姐妹學校</el-menu-item>
+    <el-submenu index="2-4">
+      <template slot="title">招生資訊</template>
+      <el-menu-item index="2-4-1">學院學士班</el-menu-item>
+      <el-menu-item index="2-4-2">音樂系</el-menu-item>
+      <el-menu-item index="2-4-3">藝設系</el-menu-item>
+    </el-submenu>
+  </el-submenu>
+  <el-menu-item index="3" >師資</el-menu-item>
+  <el-menu-item index="4" >藝術學報</el-menu-item>
+  <el-menu-item index="5" >聯絡</el-menu-item>
+
+</el-menu>
+  </div>
+
     <div class="circle"></div> 
     <div class="circle2"></div> 
    
 
    <div class="section"> 
-     <img src = "./assets/img1.png" width="100%" height="100%">
+      <div class="block">
+        <el-carousel trigger="click" height="500px">
+          <el-carousel-item >
+            <img src="./assets/img1.png" width = 100%  height=100%>
+          </el-carousel-item>
+          <el-carousel-item class="p">
+            <img src="./assets/kotak2.png" width = 100%  height=100%>
+          </el-carousel-item>
+
+          <el-carousel-item class="p">
+            <img src="./assets/img3.png" width = 100%  height=100%>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
 
      <div class="words">
       <h2>關於學院</h2>
@@ -30,17 +58,17 @@
       <div class="row">
         <div class="column1">
           <div class="kotak3">
-            <img src="./assets/kotak1.jpg" width="100%" height="247.65px"><br>
-            <p>國際跨領域學術論壇 – 意識、情感認知與體現互動藝術  </p><br><br><br>
+            <img src="./assets/kotak1.jpg" width="100%" height="100%"><br>
+            <p>國際跨領域學術論壇  </p><br><br><br>
             <el-button>Read More</el-button>
           </div>        
         </div>
 
         <div class="column1">
           <div class="kotak3">
-            <img src="./assets/kotak2.png" width="100%" height="247.65px"><br>
-            <p>華山烏梅劇場「Face to face」實驗性跨領域展演 × 四組劇場表演與一組 </p><br><br><br>
-            <el-button>Read more</el-button>
+            <img src="./assets/kotak2.png" width="100%" height="100%"><br>
+            <p>華山烏梅劇場「Face to face」</p><br><br><br>
+            <el-button>Read More</el-button>
           </div>        
         </div>
       </div><br><br><br><br><br><br><br><br>
@@ -48,24 +76,24 @@
       <div class="row">
         <div class="column">
           <div class="kotak3">
-            <img src="./assets/kotak3.jpg" width="100%" height="247.65px"><br>
-            <p>會議日期：2020年12月3日星期四全天 摘要截稿日：2020年10月25日23 </p><br><br><br>
+            <img src="./assets/kotak3.jpg" width="100%" height="100%"><br>
+            <p>會議日期：2020年12月3日  </p><br><br><br>
             <el-button>Read More</el-button>
           </div>        
         </div>
   
         <div class="column">
           <div class="kotak3">
-            <img src="./assets/kotak4.jpg" width="100%" height="247.65px"><br>
-            <p>主旨:本校《清華藝術學報第二期》全年徵稿，敬請惠予公告並鼓勵貴校師生踴躍投稿</p><br><br><br>
+            <img src="./assets/kotak4.jpg" width="100%" height="100%"><br>
+            <p>主旨:本校《清華藝術學報》</p><br><br><br>
             <el-button>Read More</el-button>      
           </div>
         </div>
 
         <div class="column">
           <div class="kotak3">
-            <img src="./assets/kotak5.jpg" width="100%" height="247.65px"><br>
-            <p>【獲獎】《那顆Ｇ1咻！》國立清華大學藝術學院學士班第一屆系展 得獎名單</p><br><br><br>
+            <img src="./assets/kotak5.jpg" width="100%" height="100%"><br>
+            <p>【獲獎】《那顆Ｇ1咻！》</p><br><br><br>
             <el-button>Read More</el-button>      
           </div>       
         </div>
@@ -126,7 +154,19 @@
 </template>
 
 <script>
-  
+export default {
+    data() {
+      return {
+        activeIndex: '1',
+        activeIndex2: '1'
+      };
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      }
+    }
+  }
 </script>
 
 <style lang="sass">
@@ -136,7 +176,23 @@
   box-sizing: border-box
   font-family: "San Fransisco UI"
 
+.el-menu
+  float: right
 
+.el-carousel__item
+  h3
+    color: #475669
+    font-size: 14px
+    opacity: 0.75
+    line-height: 150px
+    margin: 0
+
+  &:nth-child(2n)
+    background-color: #99a9bf
+
+  &:nth-child(2n+1)
+    background-color: #d3dce6
+  
 .el-button
   letter-spacing: 2px
   font-size: 12px
@@ -275,6 +331,7 @@
 
   img
     vertical-align: middle
+    margin: 5px
 
   span
     font-size: 150%
